@@ -78,6 +78,12 @@ class OngekiNet:
         for i, div in enumerate(div_list):
             # TODO: new recoredだったか否かも情報として抜くようにする。
             #       クラス名に_newがついてるかどうかで判断できるはず。
+
+            # 曲名のIDの所在がわからないため、ジャケ写のpngのファイル名をID代わりに取得しておく
+            img_url           = div.find('img',  class_='m_5 f_l')
+            jacket_file_name  = img_url['src'].split('/')[-1]
+            jacket_id, ext = os.path.splitext(jacket_file_name)
+
             play_date    = str(div.find('span', class_='f_r f_12 h_10').text).strip()
             music_name   = str(div.find('div',  class_='m_5 l_h_10 break').text).strip()
 
@@ -91,6 +97,7 @@ class OngekiNet:
             idx = div.find('input')['value']
 
             info = {
+                'jacket_id'      : jacket_id,
                 'play_date'      : play_date,
                 'music_name'     : music_name,
                 'battle_score'   : battle_score,
@@ -103,7 +110,7 @@ class OngekiNet:
 
         return play_log_list
 
-    def get_play_log_detail(self, idx):
+    def getPlayLogDetail(self, idx):
         play_log_detail_url = 'https://ongeki-net.com/ongeki-mobile/record/playlogDetail/?idx=%s'
         url = play_log_detail_url % idx
 
@@ -112,7 +119,86 @@ class OngekiNet:
             html = res.read().decode("utf-8")
             res.close()
 
-        print (html)
+        soup = BeautifulSoup(html, 'html.parser')
+
+        # まずセットしていたキャラクターの情報を取得
+        chara_div = soup.find('div', class_='t_c l_h_10').find_all('div', class_=re.compile('card_block f_l col3*'))
+        # とても可読性の低い書き方をしているがそういうことである
+        set_chara_1, ext   = os.path.splitext(chara_div[0].find('img', class_='w_127')['src'].split('/')[-1])
+        set_chara_2, ext   = os.path.splitext(chara_div[1].find('img', class_='w_127')['src'].split('/')[-1])
+        set_chara_3, ext   = os.path.splitext(chara_div[2].find('img', class_='w_127')['src'].split('/')[-1])
+
+        set_chara_1_level  = chara_div[0].find('span', class_='main_color').text
+        set_chara_2_level  = chara_div[1].find('span', class_='main_color').text
+        set_chara_3_level  = chara_div[2].find('span', class_='main_color').text
+
+        set_chara_1_attack = chara_div[0].find('span', class_='sub_color').text
+        set_chara_2_attack = chara_div[1].find('span', class_='sub_color').text
+        set_chara_3_attack = chara_div[2].find('span', class_='sub_color').text
+
+
+        div = soup.find('table', class_='score_detail_table f_r')
+
+        # MAX COMBOはクラス名がつけられていないため以下の形でとれる
+        tr = div.find('tr', class_='')
+        max_combo = tr.find('td', class_='f_b').text
+
+        # CRITICAL_BREAK
+        tr = div.find('tr', class_='score_critical_break')
+        critical_break = tr.find('td', class_='f_b').text
+
+        # BREAK
+        # 面倒なので１行にまとめる(やっていることは上の２つと同じ)
+        _break = div.find('tr', class_='score_break').find('td', class_='f_b').text
+
+        # HIT
+        hit    = div.find('tr', class_='score_hit').find('td', class_='f_b').text
+
+        # MISS
+        miss   = div.find('tr', class_='score_miss').find('td', class_='f_b').text
+
+        # BELL
+        bell   = div.find('tr', class_='score_bell').find('td', class_='f_b').text
+
+        # DAMAGE
+        damage = div.find('tr', class_='score_damage').find('td').text
+
+        # パーセンテージの値取得
+        table = soup.find('div', class_='col2 f_r p_5').find('table', class_='score_detail_table')
+        tr_list = table.find_all('tr')
+
+        tap       = tr_list[0].find('td', class_='f_b').text
+        hold      = tr_list[1].find('td', class_='f_b').text
+        flick     = tr_list[2].find('td', class_='f_b').text
+        side_tap  = tr_list[3].find('td', class_='f_b').text
+        side_hold = tr_list[4].find('td', class_='f_b').text
+
+
+        detail = {
+            'set_chara_1'        : set_chara_1,
+            'set_chara_1_level'  : set_chara_1_level,
+            'set_chara_1_attack' : set_chara_1_attack,
+            'set_chara_2'        : set_chara_2,
+            'set_chara_2_level'  : set_chara_2_level,
+            'set_chara_2_attack' : set_chara_2_attack,
+            'set_chara_3'        : set_chara_3,
+            'set_chara_3_level'  : set_chara_3_level,
+            'set_chara_3_attack' : set_chara_3_attack,
+            'max_combo'          : max_combo,
+            'critical_break'     : critical_break,
+            '_break'             : _break,
+            'hit'                : hit,
+            'miss'               : miss,
+            'bell'               : bell,
+            'damage'             : damage,
+            'tap'                : tap,
+            'hold'               : hold,
+            'flick'              : flick,
+            'side_tap'           : side_tap,
+            'side_hold'          : side_hold,
+        }
+
+        return detail
 
 
 if __name__ == '__main__':
@@ -122,6 +208,10 @@ if __name__ == '__main__':
     on.login(args[1], args[2])
     play_log_list = on.getPlayLog()
 
-    on.get_play_log_detail(play_log_list[0]['idx'])
+    for i, play_log in enumerate(play_log_list):
+        detail = on.getPlayLogDetail(play_log['idx'])
+        play_log_list[i].update(detail)
+
+        print (play_log_list[i])
 
 
