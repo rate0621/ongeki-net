@@ -8,7 +8,8 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-import headers
+from lib import headers
+from lib import db
 
 class OngekiNet:
     def __init__(self):
@@ -96,13 +97,24 @@ class OngekiNet:
             technical_score = t_block.find('div', class_='f_20').text
             idx = div.find('input')['value']
 
+            difficult_img = div.find('img')['src']
+
+            # NOTE: 本当は各難易度でしっかりとわけたいが、
+            #       それのためにわざわざEXPERT以下の難易度をプレイするのを大変なので、
+            #       MASTER以外は全部EXPERTとする
+            if 'master' in difficult_img:
+                difficult = 'MASTER'
+            else:
+                difficult = 'EXPERT'
+
             info = {
                 'jacket_id'      : jacket_id,
                 'play_date'      : play_date,
                 'music_name'     : music_name,
-                'battle_score'   : battle_score,
-                'over_damage'    : over_damage,
-                'technical_score': technical_score,
+                'difficult'      : difficult,
+                'battle_score'   : battle_score.replace(',', ''),
+                'over_damage'    : over_damage.replace('％', ''),
+                'technical_score': technical_score.replace(',', ''),
                 'idx'            : idx,
             }
 
@@ -176,26 +188,26 @@ class OngekiNet:
 
         detail = {
             'set_chara_1'        : set_chara_1,
-            'set_chara_1_level'  : set_chara_1_level,
+            'set_chara_1_level'  : set_chara_1_level.replace('Lv.', ''),
             'set_chara_1_attack' : set_chara_1_attack,
             'set_chara_2'        : set_chara_2,
-            'set_chara_2_level'  : set_chara_2_level,
+            'set_chara_2_level'  : set_chara_2_level.replace('Lv.', ''),
             'set_chara_2_attack' : set_chara_2_attack,
             'set_chara_3'        : set_chara_3,
-            'set_chara_3_level'  : set_chara_3_level,
+            'set_chara_3_level'  : set_chara_3_level.replace('Lv.', ''),
             'set_chara_3_attack' : set_chara_3_attack,
-            'max_combo'          : max_combo,
-            'critical_break'     : critical_break,
-            '_break'             : _break,
-            'hit'                : hit,
-            'miss'               : miss,
-            'bell'               : bell,
-            'damage'             : damage,
-            'tap'                : tap,
-            'hold'               : hold,
-            'flick'              : flick,
-            'side_tap'           : side_tap,
-            'side_hold'          : side_hold,
+            'max_combo'          : max_combo.replace(',', ''),
+            'critical_break'     : critical_break.replace(',', ''),
+            '_break'             : _break.replace(',', ''),
+            'hit'                : hit.replace(',', ''),
+            'miss'               : miss.replace(',', ''),
+            'bell'               : bell.replace(',', ''),
+            'damage'             : damage.replace(',', ''),
+            'tap'                : tap.replace('%', ''),
+            'hold'               : hold.replace('%', ''),
+            'flick'              : flick.replace('%', ''),
+            'side_tap'           : side_tap.replace('%', ''),
+            'side_hold'          : side_hold.replace('%', ''),
         }
 
         return detail
@@ -204,14 +216,22 @@ class OngekiNet:
 if __name__ == '__main__':
     args = sys.argv
     on = OngekiNet()
+    db = db.Db()
+    last_play_date = db.getLastPlayDate()
 
     on.login(args[1], args[2])
     play_log_list = on.getPlayLog()
 
     for i, play_log in enumerate(play_log_list):
+        if play_log['play_date'] == last_play_date:
+            print ('weeeei')
+            break
+
+
         detail = on.getPlayLogDetail(play_log['idx'])
         play_log_list[i].update(detail)
 
-        print (play_log_list[i])
+        db.insertPlayDetail(play_log_list[i])
 
 
+    print ('END')

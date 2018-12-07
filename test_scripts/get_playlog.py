@@ -1,7 +1,7 @@
 import sys, re
 from bs4 import BeautifulSoup
 
-path = 'aaa.html'
+path = 'datas/aaa.html'
 
 with open(path) as fh:
     soup = BeautifulSoup(fh.read(), 'html.parser')
@@ -26,6 +26,15 @@ for i, div in enumerate(div_list):
     technical_score = t_block.find('div', class_='f_20').text
 
     idx = div.find('input')['value']
+
+    s   = div.find('img')['src']
+    print (s)
+    if 'master' in s:
+        print ('master!')
+    else:
+        print ('other')
+
+    sys.exit()
 
     info = {
         'play_date'      : play_date,
