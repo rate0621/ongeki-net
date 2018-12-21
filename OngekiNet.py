@@ -1,4 +1,5 @@
 import sys, os, re
+from time import sleep
 
 import urllib.request
 from urllib.parse import urlencode
@@ -232,6 +233,7 @@ if __name__ == '__main__':
         play_log_list[i].update(detail)
 
         db.insertPlayDetail(play_log_list[i])
+        sleep(5)
 
 
     print ('END')

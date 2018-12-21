@@ -59,7 +59,7 @@ class Db:
         """,
         detail)
 
-        print (detail['music_name'] + ' ' + detail['play_date'])
+        print ('Insert ' + detail['music_name'] + ' ' + detail['play_date'])
         conn.commit()
         conn.close()
 
