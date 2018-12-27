@@ -10,8 +10,6 @@ from bs4 import BeautifulSoup
 
 
 def getBaseRate():
-    path = 'test_scripts/test_datas/ccc.html'
-
     url = 'https://ongeki.gamerch.com/%E3%82%AA%E3%83%B3%E3%82%B2%E3%82%AD%20%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7%EF%BC%88Lv%E9%A0%86%EF%BC%89%E9%AB%98%E9%9B%A3%E6%98%93%E5%BA%A6'
 
     with urllib.request.urlopen(url) as res:
