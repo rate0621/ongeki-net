@@ -1,10 +1,14 @@
 difficult,genre,title,total_notes,total_bells,base_rate,level
+MASTER,オンゲキ,Opfer,1824,74,14.7,14+
+MASTER,オンゲキ,Titania,2500,120,14.7,14+
 MASTER,VARIETY,神威,1874,320,14.4,14
 MASTER,オンゲキ,Everlasting Today,1456,38,14.2,14
 LUNATIC,VARIETY,No Remorse,869,170,14.0,14
 MASTER,チュウマイ,エンドマークに希望と涙を添えて,1740,206,14.3,14
 MASTER,オンゲキ,Dazzle hop,1244,147,14.2,14
 MASTER,オンゲキ,YURUSHITE,1367,57,14.5,14
+MASTER,チュウマイ,怒槌,1584,153,14.5,14
+MASTER,チュウマイ,混沌を越えし我らが神聖なる調律主を讃えよ,1572,270,14.5,14
 MASTER,チュウマイ,Oshama Scramble！,1150,54,13.8,13+
 MASTER,VARIETY,Halcyon,1508,131,13.7,13+
 MASTER,チュウマイ,AMAZING MIGHTYYYY！！！！,1249,196,13.9,13+
@@ -16,6 +20,7 @@ MASTER,チュウマイ,7thSense,1111,123,13.9,13+
 MASTER,東方Project,Destiny Runner,1241,75,13.7,13+
 MASTER,niconico,カミサマネジマキ,1382,161,13.8,13+
 MASTER,VARIETY,GOODRAGE,1241,84,13.9,13+
+LUNATIC,東方Project,ナイト・オブ・ナイツ,526,66,13.8,13+
 MASTER,niconico,脳漿炸裂ガール,1278,69,13.1,13
 MASTER,VARIETY,Brain Power,999,135,13.6,13
 MASTER,オンゲキ,Dolphika,1386,102,13.4,13
@@ -32,6 +37,8 @@ MASTER,東方Project,最終鬼畜妹フランドール・Ｓ,1440,153,13.6,13
 MASTER,チュウマイ,今ぞ♡崇め奉れ☆オマエらよ！！～姫の秘メタル渇望～,1365,215,13.5,13
 MASTER,チュウマイ,Kattobi KEIKYU Rider,1384,60,13.3,13
 MASTER,niconico,幸せになれる隠しコマンドがあるらしい,1333,109,13.2,13
+EXPERT,オンゲキ,Opfer,1103,235,13.3,13
+EXPERT,オンゲキ,Titania,1099,141,13.3,13
 MASTER,VARIETY,The Formula,894,115,12.7,12+
 MASTER,チュウマイ,Hyper Active,1021,143,12.7,12+
 MASTER,オンゲキ,P！P！P！P！がおー！！,1092,140,12.9,12+
@@ -44,6 +51,10 @@ MASTER,チュウマイ,oboro,971,99,12.8,12+
 MASTER,東方Project,Energy Booster ～ 上海紅茶館,1038,104,12.7,12+
 MASTER,東方Project,sweet little sister,964,41,12.8,12+
 MASTER,niconico,チュルリラ・チュルリラ・ダッダッダ！,1531,84,12.7,12+
+MASTER,POPS＆ANIME,Opera of the wasteland,782,70,12.9,12+
+MASTER,POPS＆ANIME,ゴーカ！ごーかい！？ファントムシーフ！,889,95,12.9,12+
+EXPERT,チュウマイ,怒槌,1251,240,12.7,12+
+EXPERT,チュウマイ,混沌を越えし我らが神聖なる調律主を讃えよ,1220,271,12.9,12+
 MASTER,POPS＆ANIME,回レ！雪月花,1087,116,12.2,12
 MASTER,チュウマイ,ＧＯ！ＧＯ！ラブリズム♥,1170,72,12.4,12
 MASTER,POPS＆ANIME,ようこそジャパリパークへ,855,86,12.0,12
@@ -77,15 +88,19 @@ EXPERT,オンゲキ,YURUSHITE,926,113,12.5,12
 MASTER,POPS＆ANIME,TOMORROW,1074,134,12.0,12
 MASTER,POPS＆ANIME,Red Battle,512,58,12.3,12
 MASTER,チュウマイ,Dragoon,929,102,12.6,12
+MASTER,東方Project,月に叢雲華に風,869,96,12.4,12
+MASTER,POPS＆ANIME,Hey-day狂騒曲（カプリチオ）,764,95,12.5,12
+MASTER,POPS＆ANIME,ゆら・ゆらRing-Dong-Dance,698,45,12.3,12
 MASTER,POPS＆ANIME,シュガーソングとビターステップ,976,58,11.7,11+
 MASTER,オンゲキ,Zest of Blue,881,77,11.9,11+
 MASTER,POPS＆ANIME,This game,790,113,11.7,11+
 MASTER,VARIETY,オモイヨシノ,974,27,11.9,11+
-MASTER,POPS＆ANIME,Red ”reduction division”,850,45,11.8,11+
+MASTER,POPS＆ANIME,Red ”reduction division” -crossroads version-,850,45,11.8,11+
 EXPERT,VARIETY,神威,1010,225,11.9,11+
 MASTER,東方Project,Grip ＆ Break Down！！,922,121,11.8,11+
 EXPERT,チュウマイ,7thSense,646,77,11.7,11+
 MASTER,niconico,いーあるふぁんくらぶ,1034,93,11.7,11+
+MASTER,POPS＆ANIME,CiRCLING,746,65,11.9,11+
 MASTER,オンゲキ,STARTLINER,819,95,11.0,11
 MASTER,オンゲキ,Perfect Shining！！,918,133,11.5,11
 MASTER,VARIETY,檄！帝国華撃団,817,120,11.3,11
@@ -93,14 +108,14 @@ MASTER,オンゲキ,みんな Happy！！,971,47,11.4,11
 EXPERT,VARIETY,Halcyon,1046,86,11.0,11
 MASTER,niconico,千本桜,972,155,11.6,11
 EXPERT,オンゲキ,Ai Nov,814,182,11.1,11
-MASTER,POPS＆ANIME,That Is How I Roll,649,55,11.0,11
+MASTER,POPS＆ANIME,That Is How I Roll！,649,55,11.0,11
 MASTER,POPS＆ANIME,BLACK SHOUT,726,79,11.0,11
 MASTER,POPS＆ANIME,鳥の詩,943,103,11.0,11
 MASTER,チュウマイ,First Twinkle,1163,196,11.4,11
 MASTER,東方Project,アクアテラリウム,833,60,11.6,11
 MASTER,niconico,ブリキノダンス,1021,178,11.5,11
-EXPERT,チュウマイ,エンドマークに希望と涙を添えて,871,241,,11
-EXPERT,niconico,カミサマネジマキ,956,105,,11
+EXPERT,チュウマイ,エンドマークに希望と涙を添えて,871,241,11.6,11
+EXPERT,niconico,カミサマネジマキ,956,105,11.5,11
 MASTER,POPS＆ANIME,わたし音頭,742,102,11.4,11
 EXPERT,VARIETY,GOODRAGE,704,124,11.5,11
 EXPERT,チュウマイ,Hyper Active,791,129,10.7,10+
@@ -110,7 +125,7 @@ EXPERT,オンゲキ,ロッキンピンクモンスター,626,123,10.7,10+
 MASTER,POPS＆ANIME,しゅわりん☆どり～みん,769,31,10.7,10+
 MASTER,POPS＆ANIME,SAKURA,729,103,10.9,10+
 EXPERT,niconico,初音ミクの激唱,982,139,10.9,10+
-EXPERT,チュウマイ,Kattobi KEIKYU Rider,1193,109,,10+
+EXPERT,チュウマイ,Kattobi KEIKYU Rider,1193,109,10.8,10+
 MASTER,POPS＆ANIME,連れ去って・閉じ込めて・好きにして,816,39,10.9,10+
 MASTER,POPS＆ANIME,君の知らない物語,579,58,10.4,10
 EXPERT,niconico,脳漿炸裂ガール,757,119,10.0,10
@@ -118,14 +133,14 @@ EXPERT,チュウマイ,Oshama Scramble！,646,87,10.2,10
 EXPERT,VARIETY,Brain Power,600,78,10.3,10
 EXPERT,オンゲキ,P！P！P！P！がおー！！,865,156,10.5,10
 EXPERT,チュウマイ,AMAZING MIGHTYYYY！！！！,743,151,10.6,10
-EXPERT,niconico,鬼KYOKAN,668,84,,10
-MASTER,POPS＆ANIME,ときめきエクスペリエンス,617,93,10.6,10
+EXPERT,niconico,鬼KYOKAN,668,84,10.0,10
+MASTER,POPS＆ANIME,ときめきエクスペリエンス！,617,93,10.6,10
 MASTER,POPS＆ANIME,えがおのオーケストラっ！,527,69,10.6,10
-EXPERT,チュウマイ,We Gonna Journey,619,67,,10
-EXPERT,チュウマイ,Paqqin,,,,10
-EXPERT,チュウマイ,閃鋼のブリューナク,702,176,,10
-EXPERT,東方Project,幻想のサテライト,764,75,,10
+EXPERT,チュウマイ,We Gonna Journey,619,67,10.4,10
+EXPERT,チュウマイ,Paqqin,712,193,10.2,10
+EXPERT,チュウマイ,閃鋼のブリューナク,702,176,10.4,10
+EXPERT,東方Project,幻想のサテライト,764,75,10.0,10
 EXPERT,niconico,ぼくらの16bit戦争,714,133,10.4,10
-EXPERT,東方Project,Destiny Runner,953,166,,10
-EXPERT,東方Project,最終鬼畜妹フランドール・Ｓ,750,72,,10
-EXPERT,niconico,チュルリラ・チュルリラ・ダッダッダ！,799,88,,10
+EXPERT,東方Project,Destiny Runner,953,166,10.0,10
+EXPERT,東方Project,最終鬼畜妹フランドール・Ｓ,750,72,10.1,10
+EXPERT,niconico,チュルリラ・チュルリラ・ダッダッダ！,799,88,10.0,10
