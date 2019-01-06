@@ -225,7 +225,7 @@ if __name__ == '__main__':
 
     for i, play_log in enumerate(play_log_list):
         if play_log['play_date'] == last_play_date:
-            print ('weeeei')
+            print ('Finish')
             break
 
 
@@ -233,7 +233,7 @@ if __name__ == '__main__':
         play_log_list[i].update(detail)
 
         db.insertPlayDetail(play_log_list[i])
-        sleep(5)
+        sleep(30)
 
 
     print ('END')
