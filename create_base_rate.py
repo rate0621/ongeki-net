@@ -52,13 +52,13 @@ def getBaseRate():
 
 def importBaseRateCsv():
     df = pd.read_csv("base_rate.csv")
-    dbname = "my_ongeki.db"
+    dbname = "../ongekiviewer/db.sqlite3"
 
     conn = sqlite3.connect(dbname)
     c = conn.cursor()
 
     #if_existsでもしすでにbase_rateが存在していても、置き換えるように指示
-    df.to_sql("base_rate", conn, if_exists="replace")
+    df.to_sql("baseratelist_music", conn, if_exists="replace", index_label='id')
 
     conn.close()
 
