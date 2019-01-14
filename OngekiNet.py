@@ -1,4 +1,5 @@
 import sys, os, re
+import random
 from time import sleep
 
 import urllib.request
@@ -233,7 +234,7 @@ if __name__ == '__main__':
         play_log_list[i].update(detail)
 
         db.insertPlayDetail(play_log_list[i])
-        sleep(30)
+        sleep(random.randrange(10, 30, 1))
 
 
     print ('END')
