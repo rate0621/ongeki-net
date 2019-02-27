@@ -52,7 +52,7 @@ def getBaseRate():
 
 def importBaseRateCsv():
     df = pd.read_csv("base_rate.csv")
-    dbname = "../db.sqlite3"
+    dbname = "../../../ongeki-data/ongeki.db"
 
     conn = sqlite3.connect(dbname)
     c = conn.cursor()
