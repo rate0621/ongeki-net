@@ -63,8 +63,22 @@ def importBaseRateCsv():
     conn.close()
 
 
+def makeMusicDescriptionEmptyData():
+    dbname = "../../../ongeki-data/ongeki.db"
+
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+
+    df = pd.read_sql("SELECT * FROM baseratelist_music", conn)
+
+    for index, row in df.iterrows():
+        c.execute("INSERT INTO baseratelist_musicdescription(title, genre, difficult, desc) SELECT ?,?,?,'' WHERE NOT EXISTS (SELECT 1 FROM baseratelist_musicdescription WHERE title = ? AND genre = ? AND difficult = ?)", (row['title'], row['genre'], row['difficult'], row['title'], row['genre'], row['difficult'] ))
+
+    conn.commit()
+
 
 getBaseRate()
 importBaseRateCsv()
 
+makeMusicDescriptionEmptyData()
 
