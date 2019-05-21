@@ -5,7 +5,7 @@ import sqlite3
 class Db:
     def __init__(self):
         here = os.path.join(os.path.dirname(os.path.abspath(__file__)))
-        self.my_ongeki_datas_db = here + '/../my_ongeki.db'
+        self.my_ongeki_datas_db = here + '/../../ongeki.db'
 
     def getLastPlayDate(self):
         conn = sqlite3.connect(self.my_ongeki_datas_db)
